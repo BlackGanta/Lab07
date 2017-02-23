@@ -1,0 +1,25 @@
+package loja;
+
+import usuario.Noob;
+import usuario.Usuario;
+
+public class FactoryDeUsuario {
+	LojaController loja = new LojaController();
+
+	public Usuario adicionaUsuario(String nome, String login, String tipo)
+			throws Exception {
+		if (tipo.equals("Noob")) {
+			try {
+				Usuario novoUser = new Noob(nome, login);
+				return novoUser;
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+
+			}
+		} else {
+			throw new Exception("Usuario deve ser do tipo Noob.");
+		}
+		return null;
+	}
+
+}

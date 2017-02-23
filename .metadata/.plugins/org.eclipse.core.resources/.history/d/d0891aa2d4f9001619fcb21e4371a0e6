@@ -1,0 +1,36 @@
+package loja;
+
+import java.util.Set;
+
+import jogo.Jogabilidade;
+import jogo.Jogo;
+import jogo.Luta;
+import jogo.Plataforma;
+import jogo.Rpg;
+import excecoes.PrecoInvalidoException;
+import excecoes.StringInvalidaException;
+
+public class FactoryDeJogo {
+	
+	public Jogo criaJogo(String jogoNome, double preco,
+			Set<Jogabilidade> tiposJogabilidades, String estiloJogo)
+			throws StringInvalidaException, PrecoInvalidoException {
+
+		String estilo = estiloJogo.toLowerCase();
+		if (estilo.equals("rpg")) {
+			return new Rpg(jogoNome, preco, tiposJogabilidades);
+			
+		} else if (estilo.equals("plataforma")) {
+			return new Plataforma(jogoNome, preco, tiposJogabilidades);
+			
+		} else if (estilo.equals("luta")) {
+			return new Luta(jogoNome, preco, tiposJogabilidades);
+			
+		} else {
+			return null;
+		}
+	}
+	
+	
+	
+}
